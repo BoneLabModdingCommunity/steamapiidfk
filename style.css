@@ -1,0 +1,1243 @@
+/* =========================================
+   CloudPlay - Part 1A
+   Global + Background + Header + Search
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --bg:#0b1018;
+    --bg2:#101722;
+
+    --card:#151d2a;
+    --card2:#1b2536;
+
+    --accent:#66c0f4;
+    --accent2:#2ea8ff;
+
+    --text:#ffffff;
+    --muted:#b6c2d1;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:
+    0 10px 40px rgba(0,0,0,.45);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:linear-gradient(
+    180deg,
+    #08111d,
+    #0c1422 35%,
+    #0b1018);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/* Animated Background */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(74,150,255,.18),
+    transparent 35%),
+
+    radial-gradient(circle at bottom right,
+    rgba(0,220,255,.12),
+    transparent 40%),
+
+    radial-gradient(circle at center,
+    rgba(255,255,255,.03),
+    transparent 60%);
+
+    animation:bgMove 18s linear infinite;
+
+}
+
+@keyframes bgMove{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* Header */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    width:100%;
+
+    height:78px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 50px;
+
+    background:rgba(8,12,20,.82);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+/* Logo */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.logo i{
+
+    color:var(--accent);
+
+    font-size:28px;
+
+}
+
+/* Search */
+
+.searchBar{
+
+    width:600px;
+
+    max-width:60vw;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.25s;
+
+}
+
+.searchBar:hover{
+
+    border-color:rgba(102,192,244,.5);
+
+}
+
+.searchBar:focus-within{
+
+    border-color:var(--accent);
+
+    box-shadow:
+    0 0 0 4px rgba(102,192,244,.15);
+
+}
+
+.searchBar i{
+
+    color:#9cb5c7;
+
+}
+
+.searchBar input{
+
+    flex:1;
+
+    border:none;
+
+    background:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.searchBar input::placeholder{
+
+    color:#8ea0b2;
+
+}
+
+/* Random Button */
+
+#randomBtn{
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent2));
+
+    transition:.25s;
+
+    font-size:18px;
+
+    box-shadow:
+    0 10px 25px rgba(46,168,255,.25);
+
+}
+
+#randomBtn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 16px 40px rgba(46,168,255,.4);
+
+}
+
+/* Main */
+
+main{
+
+    width:min(1450px,92%);
+
+    margin:auto;
+
+}
+
+/* Search Suggestions */
+
+#autocomplete{
+
+    position:absolute;
+
+    top:82px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:600px;
+
+    max-width:60vw;
+
+    background:#131b29;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    display:none;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid var(--border);
+
+    z-index:999;
+
+}
+
+.suggestion{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 18px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.suggestion:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+.suggestion img{
+
+    width:60px;
+
+    border-radius:8px;
+
+}
+
+.suggestion h4{
+
+    font-size:15px;
+
+}
+
+.suggestion span{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+/* Utility */
+
+.hidden{
+
+    display:none!important;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0d1320;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2a3a55;
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#3b4d70;
+
+}
+/* =========================================
+   CloudPlay - Part 1B
+   Hero + Featured Card
+========================================= */
+
+#landing{
+
+    margin-top:40px;
+    margin-bottom:70px;
+
+}
+
+.hero{
+
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:50px;
+    align-items:center;
+
+}
+
+.heroLeft h1{
+
+    font-size:72px;
+    line-height:1;
+    font-weight:800;
+
+    background:linear-gradient(
+    90deg,
+    #ffffff,
+    #66c0f4,
+    #2ea8ff);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    margin-bottom:25px;
+
+}
+
+.heroLeft p{
+
+    font-size:19px;
+    line-height:1.8;
+
+    color:var(--muted);
+
+    max-width:620px;
+
+    margin-bottom:40px;
+
+}
+
+#browseButton{
+
+    padding:18px 42px;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:16px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent2));
+
+    transition:.25s;
+
+    box-shadow:
+    0 15px 40px rgba(46,168,255,.25);
+
+}
+
+#browseButton:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 25px 55px rgba(46,168,255,.4);
+
+}
+
+.heroRight{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* Featured Card */
+
+.heroCard{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:650px;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:var(--card);
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.heroCard:hover{
+
+    transform:translateY(-8px) scale(1.01);
+
+}
+
+.heroCard img{
+
+    width:100%;
+
+    display:block;
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    padding:35px;
+
+    background:linear-gradient(
+    transparent,
+    rgba(0,0,0,.88));
+
+}
+
+.overlay h2{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+
+}
+
+.overlay span{
+
+    display:inline-flex;
+
+    padding:8px 14px;
+
+    border-radius:50px;
+
+    background:rgba(102,192,244,.2);
+
+    color:#8fd8ff;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+/* Decorative Glow */
+
+.heroCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    background:
+    linear-gradient(
+    130deg,
+    rgba(102,192,244,.3),
+    transparent,
+    rgba(46,168,255,.3));
+
+    opacity:0;
+
+    transition:.35s;
+
+    pointer-events:none;
+
+}
+
+.heroCard:hover::before{
+
+    opacity:1;
+
+}
+
+/* Floating Animation */
+
+.heroCard{
+
+    animation:floatCard 6s ease-in-out infinite;
+
+}
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:1100px){
+
+.hero{
+
+    grid-template-columns:1fr;
+
+}
+
+.heroLeft{
+
+    text-align:center;
+
+}
+
+.heroLeft p{
+
+    margin:auto;
+    margin-bottom:35px;
+
+}
+
+.heroRight{
+
+    margin-top:20px;
+
+}
+
+.heroLeft h1{
+
+    font-size:58px;
+
+}
+
+}
+
+@media(max-width:700px){
+
+.heroLeft h1{
+
+    font-size:42px;
+
+}
+
+.heroLeft p{
+
+    font-size:16px;
+
+}
+
+#browseButton{
+
+    width:100%;
+
+}
+
+.overlay h2{
+
+    font-size:25px;
+
+}
+
+}
+/* =========================================
+   CloudPlay - Part 1C
+   Results Grid + Game Cards + Sections
+========================================= */
+
+/* Sections */
+
+#resultsSection,
+#detailsSection,
+#playerSection{
+
+    margin-top:60px;
+
+}
+
+#resultsSection h2,
+#detailsSection h2,
+#playerSection h2{
+
+    font-size:28px;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+
+    color:white;
+
+}
+
+/* Game Grid */
+
+#gameGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+/* Game Card */
+
+.gameCard{
+
+    background:linear-gradient(
+    180deg,
+    var(--card),
+    var(--card2));
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+    position:relative;
+
+}
+
+.gameCard:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(102,192,244,.4);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+
+}
+
+.gameCard img{
+
+    width:100%;
+
+    height:140px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.gameCardContent{
+
+    padding:12px 14px;
+
+}
+
+.gameCard h3{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+    line-height:1.3;
+
+}
+
+.gameCard span{
+
+    font-size:13px;
+
+    color:var(--muted);
+
+}
+
+/* Loading */
+
+.loading{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:40px;
+
+    color:var(--muted);
+
+    font-size:16px;
+
+}
+
+/* Details Section */
+
+.gameHero{
+
+    position:relative;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+
+}
+
+.gameHero img{
+
+    width:100%;
+
+    height:420px;
+
+    object-fit:cover;
+
+    display:block;
+
+    filter:brightness(.7);
+
+}
+
+.heroGradient{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(0,0,0,.85));
+
+}
+
+.gameInfo{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    padding:35px;
+
+}
+
+.gameInfo h1{
+
+    font-size:44px;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+
+}
+
+#genres{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-bottom:15px;
+
+}
+
+#genres span{
+
+    padding:6px 12px;
+
+    border-radius:50px;
+
+    background:rgba(102,192,244,.15);
+
+    color:#9edbff;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+#description{
+
+    color:var(--muted);
+
+    max-width:700px;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+
+}
+
+/* Stats */
+
+.stats{
+
+    display:flex;
+
+    gap:30px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.stats div{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.stats label{
+
+    font-size:12px;
+
+    color:var(--muted);
+
+}
+
+.stats span{
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+/* Buttons */
+
+.buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+#playButton{
+
+    padding:14px 28px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    font-size:15px;
+
+    color:white;
+
+    background:linear-gradient(
+    135deg,
+    #2ea8ff,
+    #66c0f4);
+
+    transition:.25s;
+
+}
+
+#playButton:hover{
+
+    transform:translateY(-3px);
+
+}
+
+#steamButton{
+
+    padding:14px 20px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.04);
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+/* Screenshots */
+
+.gallery{
+
+    margin-top:40px;
+
+}
+
+#screenshots{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+
+    gap:15px;
+
+}
+
+#screenshots img{
+
+    width:100%;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+#screenshots img:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* Player */
+
+#playerSection{
+
+    background:rgba(0,0,0,.4);
+
+    padding:20px;
+
+    border-radius:18px;
+
+}
+
+.playerTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+#closePlayer{
+
+    background:none;
+
+    border:none;
+
+    font-size:28px;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+.playerContainer{
+
+    position:relative;
+
+    width:100%;
+
+    height:600px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+}
+
+#gameFrame{
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+}
+
+/* Footer */
+
+footer{
+
+    margin-top:80px;
+
+    padding:40px 0;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    border-top:1px solid var(--border);
+
+}
+
+/* Loading Overlay */
+
+#loadingOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+
+}
+
+.loader{
+
+    width:60px;
+
+    height:60px;
+
+    border:4px solid rgba(255,255,255,.1);
+
+    border-top:4px solid var(--accent);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+    margin-bottom:20px;
+
+}
+
+@keyframes spin{
+
+    to{transform:rotate(360deg);}
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.gameInfo h1{
+
+    font-size:32px;
+
+}
+
+.gameHero img{
+
+    height:320px;
+
+}
+
+.playerContainer{
+
+    height:420px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+#gameGrid{
+
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+
+}
+
+.gameInfo{
+
+    padding:20px;
+
+}
+
+.gameInfo h1{
+
+    font-size:26px;
+
+}
+
+}
