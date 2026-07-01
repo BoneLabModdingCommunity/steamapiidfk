@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudPlay</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/6d5f1b5e74.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="background"></div>
+
+<header>
+
+    <div class="logo">
+        <i class="fa-solid fa-gamepad"></i>
+        <span>CloudPlay</span>
+    </div>
+
+    <div class="searchBar">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search Steam games..."
+            autocomplete="off">
+
+    </div>
+
+    <button id="randomBtn">
+        <i class="fa-solid fa-shuffle"></i>
+    </button>
+
+</header>
+
+<div id="autocomplete"></div>
+
+<main>
+
+<section id="landing">
+
+<div class="hero">
+
+<div class="heroLeft">
+
+<h1>
+Play Steam Games
+Anywhere.
+</h1>
+
+<p>
+
+Search for any Steam game and instantly launch it on one of your cloud PCs.
+
+</p>
+
+<button id="browseButton">
+Browse Games
+</button>
+
+</div>
+
+<div class="heroRight">
+
+<div class="heroCard">
+
+<img
+id="featuredImage"
+src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg"
+alt="">
+
+<div class="overlay">
+
+<h2 id="featuredTitle">
+
+Cyberpunk 2077
+
+</h2>
+
+<span>
+
+Featured Today
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="resultsSection">
+
+<h2>
+
+Search Results
+
+</h2>
+
+<div id="gameGrid">
+
+<div class="loading">
+
+Search for a game...
+
+</div>
+
+</div>
+
+</section>
+
+<section id="detailsSection" class="hidden">
+
+<div class="gameHero">
+
+<img
+id="gameHeader"
+src=""
+alt="">
+
+<div class="heroGradient"></div>
+
+<div class="gameInfo">
+
+<h1 id="gameTitle"></h1>
+
+<div id="genres"></div>
+
+<p id="description"></p>
+
+<div class="stats">
+
+<div>
+
+<label>Developer</label>
+
+<span id="developer"></span>
+
+</div>
+
+<div>
+
+<label>Publisher</label>
+
+<span id="publisher"></span>
+
+</div>
+
+<div>
+
+<label>Release</label>
+
+<span id="release"></span>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button id="playButton">
+
+<i class="fa-solid fa-play"></i>
+
+Play
+
+</button>
+
+<button id="steamButton">
+
+<i class="fa-brands fa-steam"></i>
+
+Steam Page
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="gallery">
+
+<h2>
+
+Screenshots
+
+</h2>
+
+<div id="screenshots">
+
+</div>
+
+</div>
+
+</section>
+
+<section id="playerSection" class="hidden">
+
+<div class="playerTop">
+
+<h2>
+
+Cloud Session
+
+</h2>
+
+<button id="closePlayer">
+
+×
+
+</button>
+
+</div>
+
+<div class="playerContainer">
+
+<iframe
+id="gameFrame"
+allowfullscreen>
+
+</iframe>
+
+<div id="iframeBlocked" class="hidden">
+
+<h2>
+
+This cloud PC cannot be embedded.
+
+</h2>
+
+<p>
+
+Click below to open it in a new tab.
+
+</p>
+
+<a
+id="openExternal"
+target="_blank">
+
+Open Cloud PC
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<div>
+
+CloudPlay
+
+</div>
+
+<div>
+
+Steam games belong to their respective owners.
+
+</div>
+
+</footer>
+
+<div id="loadingOverlay" class="hidden">
+
+<div class="loader"></div>
+
+<h2>
+
+Connecting to Cloud PC...
+
+</h2>
+
+<p>
+
+Selecting an available gaming machine.
+
+</p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
